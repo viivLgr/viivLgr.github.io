@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://viivlgr.github.io">
-  <title>Archives: 2017/3 | Viiv李果然的博客</title>
+  <title>jsonp | Viiv李果然的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Viiv李果然的博客">
-<meta property="og:url" content="http://viivlgr.github.io/archives/2017/03/index.html">
+  <meta name="description" content="参考：轻松搞定JSONP跨域请求
+一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsonp">
+<meta property="og:url" content="http://viivlgr.github.io/2017/05/04/jsonp/index.html">
 <meta property="og:site_name" content="Viiv李果然的博客">
-<meta property="og:description" content="记录学习历程">
+<meta property="og:description" content="参考：轻松搞定JSONP跨域请求
+一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-40ddced9e215ebf85c655d05b804ec1c_b.png">
+<meta property="og:updated_time" content="2017-05-04T09:16:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Viiv李果然的博客">
-<meta name="twitter:description" content="记录学习历程">
+<meta name="twitter:title" content="jsonp">
+<meta name="twitter:description" content="参考：轻松搞定JSONP跨域请求
+一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-40ddced9e215ebf85c655d05b804ec1c_b.png">
   
     <link rel="alternative" href="/atom.xml" title="Viiv李果然的博客" type="application/atom+xml">
   
@@ -156,147 +162,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jsonp" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/learn-markdown/" class="archive-article-date">
-  	<time datetime="2017-03-29T17:57:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/learn-markdown/">学习使用markdown语法</a>
+    <h1 class="article-title" itemprop="name">
+      jsonp
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/04/jsonp/" class="archive-article-date">
+  	<time datetime="2017-05-04T09:06:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考：<a href="http://blog.csdn.net/u014607184/article/details/52027879" target="_blank" rel="external">轻松搞定JSONP跨域请求</a></p>
+<p>一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。</p>
+<a id="more"></a>
+<p>要理解跨域，先要了解一下“同源策略”。</p>
+<blockquote>
+<p>所谓同源是指，<strong>域名</strong>，<strong>协议</strong>，<strong>端口</strong>相同。<br>简单的说就是基于安全考虑，当前域不能访问其他域的东西。</p>
+</blockquote>
+<hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">   <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"></div><div class="line">	oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line"></div><div class="line">		xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</div><div class="line">				<span class="built_in">console</span>.log(xhr.responseText);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.</span></div><div class="line">		xhr.open(<span class="string">'get'</span>,<span class="string">'https://api.douban.com/v2/book/search?q=javascript&amp;count=1'</span>,<span class="literal">true</span>);</div><div class="line">		xhr.send();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-40ddced9e215ebf85c655d05b804ec1c_b.png" alt=""><br>浏览器会报出上面的错误 ，请求资源上不存在“访问控制允许源”标头。</p>
+<p><strong>JSONP 是 JSON with padding（填充式 JSON 或参数式 JSON）的简写</strong></p>
+<p>我们知道，<img>的src（获取图片），<link>的href（获取css），<script>的src（获取javascript）这三个都不符合同源策略，它们可以跨域获取数据。</p>
+<p>这里要介绍的JSONP就是利用<script>的src来实现跨域获取数据的。</p>
+<p>实现跨域的原理就是动态生成script标签，然后利用<script>的src不受同源策略约束来跨域获取数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(response);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"></div><div class="line">	oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">// 动态生成script标签，将请求路径赋给src，然后放到文档中</span></div><div class="line">	<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">	script.src = <span class="string">'https://api.douban.com/v2/book/search?q=javascript&amp;count=1&amp;callback=handleResponse'</span>;</div><div class="line">	<span class="built_in">document</span>.body.insertBefore(script,<span class="built_in">document</span>.body.firstChild);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用jquery的封装好的jsonp来实现跨域"><a href="#使用jquery的封装好的jsonp来实现跨域" class="headerlink" title="使用jquery的封装好的jsonp来实现跨域"></a>使用jquery的封装好的jsonp来实现跨域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">	<span class="attr">async</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">url</span>: <span class="string">'https://api.douban.com/v2/book/search'</span>,</div><div class="line">	<span class="attr">type</span>: <span class="string">'GET'</span>,</div><div class="line">	<span class="attr">dataType</span>: <span class="string">'jsonp'</span>, <span class="comment">//返回的数据类型，设置为jsonp方式</span></div><div class="line">	jsonp: <span class="string">'callback'</span>, <span class="comment">// 指定一个查询参数名称来覆盖默认的jsonp回调参数 callback</span></div><div class="line">	jsonpCallback: <span class="string">'handleResponse'</span>, <span class="comment">// 设置回调函数名</span></div><div class="line">	data: &#123;</div><div class="line">	   <span class="attr">q</span>: <span class="string">'javascript'</span>,</div><div class="line">	   <span class="attr">count</span>: <span class="number">1</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">response,status,xhr</span>)</span>&#123;</div><div class="line">	   <span class="built_in">console</span>.log(<span class="string">'状态为：'</span>+status+<span class="string">'状态是：'</span>+xhr.statusText);</div><div class="line">	   <span class="built_in">console</span>.log(response);</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="使用-getJSON来实现跨域"><a href="#使用-getJSON来实现跨域" class="headerlink" title="使用$.getJSON来实现跨域"></a>使用$.getJSON来实现跨域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$.getJSON(<span class="string">'https://api.douban.com/v2/book/search?callback=?'</span>,&#123;</div><div class="line">	<span class="attr">q</span>: <span class="string">'javascript'</span>,</div><div class="line">	<span class="attr">count</span>: <span class="number">1</span></div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">response,status,xhr</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'状态为：'</span>+status+<span class="string">'状态是：'</span>+xhr.statusText);</div><div class="line">	<span class="built_in">console</span>.log(response);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</script></p>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
+        			<a href="/categories/jsonp/" class="article-tag-list-link color1">jsonp</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://viivlgr.github.io/2017/05/04/jsonp/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/30/build-hexo-and-change-theme/" class="archive-article-date">
-  	<time datetime="2017-03-29T16:56:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/build-hexo-and-change-theme/">我的博客终于出生啦~</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">first commit</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/30/learn-markdown/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习使用markdown语法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/29/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-28T18:08:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/hello-world/">Hello World</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -319,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
