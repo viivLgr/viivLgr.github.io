@@ -8,20 +8,17 @@
   <link rel="dns-prefetch" href="http://viivlgr.github.io">
   <title>jsonp | Viiv李果然的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考：轻松搞定JSONP跨域请求
-一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。">
+  <meta name="description" content="参考：轻松搞定JSONP跨域请求参考：JavaScript 跨域总结与解决办法&amp;amp;version=12020510&amp;amp;nettype=WIFI&amp;amp;fontScale=100&amp;amp;pass_ticket=RBWQ%2BryWlU3B%2FMZnILchEGXaFr0LZOqQqXF1pghzJA2zCFx6uqWXuR1ObQWRc5R2)要理解跨域，先要了解一下“同源策略”。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsonp">
 <meta property="og:url" content="http://viivlgr.github.io/2017/05/04/jsonp/index.html">
 <meta property="og:site_name" content="Viiv李果然的博客">
-<meta property="og:description" content="参考：轻松搞定JSONP跨域请求
-一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。">
+<meta property="og:description" content="参考：轻松搞定JSONP跨域请求参考：JavaScript 跨域总结与解决办法&amp;amp;version=12020510&amp;amp;nettype=WIFI&amp;amp;fontScale=100&amp;amp;pass_ticket=RBWQ%2BryWlU3B%2FMZnILchEGXaFr0LZOqQqXF1pghzJA2zCFx6uqWXuR1ObQWRc5R2)要理解跨域，先要了解一下“同源策略”。">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-40ddced9e215ebf85c655d05b804ec1c_b.png">
-<meta property="og:updated_time" content="2017-05-04T09:25:20.000Z">
+<meta property="og:updated_time" content="2017-05-05T08:13:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jsonp">
-<meta name="twitter:description" content="参考：轻松搞定JSONP跨域请求
-一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。">
+<meta name="twitter:description" content="参考：轻松搞定JSONP跨域请求参考：JavaScript 跨域总结与解决办法&amp;amp;version=12020510&amp;amp;nettype=WIFI&amp;amp;fontScale=100&amp;amp;pass_ticket=RBWQ%2BryWlU3B%2FMZnILchEGXaFr0LZOqQqXF1pghzJA2zCFx6uqWXuR1ObQWRc5R2)要理解跨域，先要了解一下“同源策略”。">
 <meta name="twitter:image" content="https://pic1.zhimg.com/v2-40ddced9e215ebf85c655d05b804ec1c_b.png">
   
     <link rel="alternative" href="/atom.xml" title="Viiv李果然的博客" type="application/atom+xml">
@@ -182,23 +179,103 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考：<a href="http://blog.csdn.net/u014607184/article/details/52027879" target="_blank" rel="external">轻松搞定JSONP跨域请求</a></p>
-<p>一直没有搞清楚跨域是怎么一回事，这次拿豆瓣的api简单尝试一下。</p>
-<a id="more"></a>
-<p>要理解跨域，先要了解一下“同源策略”。</p>
+        <p>参考：<a href="http://blog.csdn.net/u014607184/article/details/52027879" target="_blank" rel="external">轻松搞定JSONP跨域请求</a><br>参考：<a href="https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651552007&amp;idx=1&amp;sn=82381dc98233587426018afd72768d09&amp;chksm=8025aec6b75227d063ee26e27c7bb6e5ea4e3700cb5d6e9634dbd7cee049a40ecc3c1ae0698c&amp;mpshare=1&amp;scene=1&amp;srcid=0503FDsvNa0CJhllNt0V2RTX&amp;key=b7bf05e2e7c728ec6b86b14f8a3269f5b8558a66fd770a963d64940b4ca1e8aa4f9ada0b0d0cb87968a22d0b99aa3be3444508a4193fda9d98e7e4fe9d28acf05a288e9d315b6d2a70d54f72eb408580&amp;ascene=0&amp;uin=NDI3NjE3NDE1&amp;devicetype=iMac+MacBookPro13%2C2+OSX+OSX+10.12.4+build(16E195" target="_blank" rel="external">JavaScript 跨域总结与解决办法</a>&amp;version=12020510&amp;nettype=WIFI&amp;fontScale=100&amp;pass_ticket=RBWQ%2BryWlU3B%2FMZnILchEGXaFr0LZOqQqXF1pghzJA2zCFx6uqWXuR1ObQWRc5R2)<br>要理解跨域，先要了解一下“同源策略”。</p>
 <blockquote>
 <p>所谓同源是指，<strong>域名</strong>，<strong>协议</strong>，<strong>端口</strong>相同。<br>简单的说就是基于安全考虑，当前域不能访问其他域的东西。</p>
 </blockquote>
+<a id="more"></a>
 <hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">   <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"></div><div class="line">	oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line"></div><div class="line">		xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</div><div class="line">				<span class="built_in">console</span>.log(xhr.responseText);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.</span></div><div class="line">		xhr.open(<span class="string">'get'</span>,<span class="string">'https://api.douban.com/v2/book/search?q=javascript&amp;count=1'</span>,<span class="literal">true</span>);</div><div class="line">		xhr.send();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>什么是跨域</strong></p>
+<p>JavaScript出于安全方面的考虑，不允许跨域调用其他页面的对象。但在安全限制的同时也给注入iframe或是ajax应用上带来了不少麻烦。</p>
+<p>网上一张列举跨域的详细清单：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">URL</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">是否允许通信</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>http://www.a.com/a.js</code> <br> <code>http://www.a.com/b.js</code></td>
+<td style="text-align:center">同一域名下</td>
+<td style="text-align:center">允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.a.com/lib/a.js</code> <br> <code>http://www.a.com/script/b.js</code></td>
+<td style="text-align:center">同一域名下不同文件夹</td>
+<td style="text-align:center">允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.a.com:8080/a.js</code> <br> <code>http://www.a.com/b.js</code></td>
+<td style="text-align:center">同一域名，不同端口</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.a.com/a.js</code> <br> <code>https://www.a.com/b.js</code></td>
+<td style="text-align:center">同一域名，不同协议</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.a.com/a.js</code> <br> <code>http://70.32.92.74/b.js</code></td>
+<td style="text-align:center">域名和域名对应IP</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.a.com/a.js</code> <br> <code>http://script.a.com/b.js</code></td>
+<td style="text-align:center">主域相同，子域不同</td>
+<td style="text-align:center">不允许</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.a.com/a.js</code> <br> <code>http://a.com/b.js</code></td>
+<td style="text-align:center">同一域名，不同二级域名 <br>(同上)</td>
+<td style="text-align:center">不允许<br>（cookie这种情况下也不允许访问）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>http://www.cnblogs.com/a.js</code> <br> <code>http://www.a.com/b.js</code></td>
+<td style="text-align:center">不同域名</td>
+<td style="text-align:center">不允许</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>有两点要特别注意：</p>
+<ul>
+<li>如果是<strong>协议</strong>和<strong>端口</strong>造成的跨域问题“前台”是无能为力的</li>
+<li>在跨域问题上，域仅仅是通过“URL的首部”来识别而不会去尝试判断相同的ip地址对应着两个域或两个域是否在同一个ip上。<ul>
+<li>“URL的首部”指window.location.protocol +window.location.host，也可以理解为“Domains, protocols and ports must match”。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>拿豆瓣的api简单尝试一下跨域请求出现的问题。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">   <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"></div><div class="line">	oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line"></div><div class="line">		xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</div><div class="line">				<span class="built_in">console</span>.log(xhr.responseText);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.</span></div><div class="line">		xhr.open(<span class="string">'get'</span>,<span class="string">'https://api.douban.com/v2/book/search?q=javascript&amp;count=1'</span>,<span class="literal">true</span>);</div><div class="line">		xhr.send();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><img src="https://pic1.zhimg.com/v2-40ddced9e215ebf85c655d05b804ec1c_b.png" alt=""><br>浏览器会报出上面的错误 ，请求资源上不存在“访问控制允许源”标头。</p>
 <p><strong>JSONP 是 JSON with padding（填充式 JSON 或参数式 JSON）的简写</strong></p>
-<p>我们知道，img的src（获取图片），link的href（获取css），script的src（获取javascript）这三个都不符合同源策略，它们可以跨域获取数据。</p>
+<p>我们知道，<code>&lt;img&gt;</code>的src（获取图片），<code>&lt;link&gt;</code>的href（获取css），<code>&lt;script&gt;</code>的src（获取javascript）这三个都不符合同源策略，它们可以跨域获取数据。</p>
 <p>这里要介绍的JSONP就是利用 <code>&lt;script&gt;</code> 的src来实现跨域获取数据的。</p>
-<p>实现跨域的原理就是动态生成script标签，然后利用script的src不受同源策略约束来跨域获取数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(response);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"></div><div class="line">	oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">// 动态生成script标签，将请求路径赋给src，然后放到文档中</span></div><div class="line">	<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">	script.src = <span class="string">'https://api.douban.com/v2/book/search?q=javascript&amp;count=1&amp;callback=handleResponse'</span>;</div><div class="line">	<span class="built_in">document</span>.body.insertBefore(script,<span class="built_in">document</span>.body.firstChild);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现跨域的原理就是动态生成<code>&lt;script&gt;</code>标签，然后利用<code>&lt;script&gt;</code>的src不受同源策略约束来跨域获取数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(response);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">window</span>.onload  = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line"></div><div class="line">	oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">// 动态生成script标签，将请求路径赋给src，然后放到文档中</span></div><div class="line">	<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">	script.src = <span class="string">'https://api.douban.com/v2/book/search?q=javascript&amp;count=1&amp;callback=handleResponse'</span>;</div><div class="line">	<span class="built_in">document</span>.body.insertBefore(script,<span class="built_in">document</span>.body.firstChild);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="使用jquery的封装好的jsonp来实现跨域"><a href="#使用jquery的封装好的jsonp来实现跨域" class="headerlink" title="使用jquery的封装好的jsonp来实现跨域"></a>使用jquery的封装好的jsonp来实现跨域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">	<span class="attr">async</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">url</span>: <span class="string">'https://api.douban.com/v2/book/search'</span>,</div><div class="line">	<span class="attr">type</span>: <span class="string">'GET'</span>,</div><div class="line">	<span class="attr">dataType</span>: <span class="string">'jsonp'</span>, <span class="comment">//返回的数据类型，设置为jsonp方式</span></div><div class="line">	jsonp: <span class="string">'callback'</span>, <span class="comment">// 指定一个查询参数名称来覆盖默认的jsonp回调参数 callback</span></div><div class="line">	jsonpCallback: <span class="string">'handleResponse'</span>, <span class="comment">// 设置回调函数名</span></div><div class="line">	data: &#123;</div><div class="line">	   <span class="attr">q</span>: <span class="string">'javascript'</span>,</div><div class="line">	   <span class="attr">count</span>: <span class="number">1</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">response,status,xhr</span>)</span>&#123;</div><div class="line">	   <span class="built_in">console</span>.log(<span class="string">'状态为：'</span>+status+<span class="string">'状态是：'</span>+xhr.statusText);</div><div class="line">	   <span class="built_in">console</span>.log(response);</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h2 id="使用-getJSON来实现跨域"><a href="#使用-getJSON来实现跨域" class="headerlink" title="使用$.getJSON来实现跨域"></a>使用$.getJSON来实现跨域</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$.getJSON(<span class="string">'https://api.douban.com/v2/book/search?callback=?'</span>,&#123;</div><div class="line">	<span class="attr">q</span>: <span class="string">'javascript'</span>,</div><div class="line">	<span class="attr">count</span>: <span class="number">1</span></div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">response,status,xhr</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'状态为：'</span>+status+<span class="string">'状态是：'</span>+xhr.statusText);</div><div class="line">	<span class="built_in">console</span>.log(response);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="document-domain-iframe的设置"><a href="#document-domain-iframe的设置" class="headerlink" title="document.domain+iframe的设置"></a>document.domain+iframe的设置</h2><p>对于主域相同而子域不同的例子，可以通过设置document.domain的办法来解决。 具体的做法是可以在<code>http://www.a.com/a.html</code>和<code>http://script.a.com/b.html</code>两个文件中分别加上 <code>document.domain = ‘a.com’</code>；然后通过<code>a.html</code>文件中创建一个<code>iframe</code>，去控制<code>iframe</code>的<code>contentDocument</code>，这样两个js文件之间就可以 “交互”了。当然这种办法只能解决<strong>主域相同而二级域名不同</strong>的情况，如果你异想天开的把script.a.com的domian设为alibaba.com 那显然是会报错地！代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// www.a.com上的a.html</div><div class="line"></div><div class="line">document.domain = &apos;a.com&apos;;</div><div class="line">var ifr = document.createElement(&apos;iframe&apos;);</div><div class="line">ifr.src = &apos;http://script.a.com/b.html&apos;;</div><div class="line">ifr.style.display = &apos;none&apos;;</div><div class="line">document.body.appendChild(ifr);</div><div class="line">ifr.onload = function()&#123;</div><div class="line">    var doc = ifr.contentDocument || ifr.contentWindow.document;</div><div class="line">    // 在这里操纵b.html</div><div class="line">    alert(doc.getElementsByTagName(&quot;h1&quot;)[0].childNodes[0].nodeValue);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// script.a.com上的b.html</div><div class="line"></div><div class="line">document.domain = &apos;a.com&apos;;</div></pre></td></tr></table></figure>
+<p>这种方式适用于<code>www.kuqin.com</code>, <code>kuqin.com</code>, <code>script.kuqin.com</code>, <code>css.kuqin.com</code>中的任何页面相互通信。</p>
+<blockquote>
+<p>备注：</p>
+<ul>
+<li>某一页面的<code>domain</code>默认等于<code>window.location.hostname</code>。</li>
+<li>主域名是不带www的域名，例如a.com，</li>
+<li>主域名前面带前缀的通常都为二级域名或多级域名，例如www.a.com其实是二级域名。</li>
+<li><code>domain</code>只能设置为主域名，不可以在b.a.com中将domain设置为c.a.com。</li>
+</ul>
+<p>问题：</p>
+<ul>
+<li>安全性，当一个站点（b.a.com）被攻击后，另一个站点（c.a.com）会引起安全漏洞。</li>
+<li>如果一个页面中引入多个iframe，要想能够操作所有iframe，必须都得设置相同domain。</li>
+</ul>
+</blockquote>
 
       
 
