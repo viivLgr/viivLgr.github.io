@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://viivlgr.github.io">
-  <title>数组排序与乱序 | Viiv李果然的博客</title>
+  <title>不使用循环生成数组 | Viiv李果然的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="传统的方法生成数组12345678910111213// 方法1var arr = new Array(10);for(var i = 0; i &amp;lt; arr.length; i++)&amp;#123;  arr[i] = i;&amp;#125;console.log(arr);// 方法2var arr = [];for(var i = 0; i &amp;lt; 10; i++)&amp;#123; arr.push">
+  <meta name="description" content="记一次面试，不使用循环生成100位数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组排序与乱序">
+<meta property="og:title" content="不使用循环生成数组">
 <meta property="og:url" content="http://viivlgr.github.io/2017/05/06/不使用循环生成数组/index.html">
 <meta property="og:site_name" content="Viiv李果然的博客">
-<meta property="og:description" content="传统的方法生成数组12345678910111213// 方法1var arr = new Array(10);for(var i = 0; i &amp;lt; arr.length; i++)&amp;#123;  arr[i] = i;&amp;#125;console.log(arr);// 方法2var arr = [];for(var i = 0; i &amp;lt; 10; i++)&amp;#123; arr.push">
-<meta property="og:updated_time" content="2017-05-06T12:40:20.000Z">
+<meta property="og:description" content="记一次面试，不使用循环生成100位数组">
+<meta property="og:updated_time" content="2017-05-06T12:42:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数组排序与乱序">
-<meta name="twitter:description" content="传统的方法生成数组12345678910111213// 方法1var arr = new Array(10);for(var i = 0; i &amp;lt; arr.length; i++)&amp;#123;  arr[i] = i;&amp;#125;console.log(arr);// 方法2var arr = [];for(var i = 0; i &amp;lt; 10; i++)&amp;#123; arr.push">
+<meta name="twitter:title" content="不使用循环生成数组">
+<meta name="twitter:description" content="记一次面试，不使用循环生成100位数组">
   
     <link rel="alternative" href="/atom.xml" title="Viiv李果然的博客" type="application/atom+xml">
   
@@ -164,7 +164,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数组排序与乱序
+      不使用循环生成数组
     </h1>
   
 
@@ -177,8 +177,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>传统的方法生成数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 方法1</div><div class="line">var arr = new Array(10);</div><div class="line">for(var i = 0; i &lt; arr.length; i++)&#123;</div><div class="line">  arr[i] = i;</div><div class="line">&#125;</div><div class="line">console.log(arr);</div><div class="line"></div><div class="line">// 方法2</div><div class="line">var arr = [];</div><div class="line">for(var i = 0; i &lt; 10; i++)&#123;</div><div class="line"> arr.push(i);</div><div class="line">&#125;</div><div class="line">console.log(i);</div></pre></td></tr></table></figure></p>
+        <p>记一次面试，不使用循环生成100位数组</p>
 <a id="more"></a>
+<p>传统的方法生成数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 方法1</div><div class="line">var arr = new Array(10);</div><div class="line">for(var i = 0; i &lt; arr.length; i++)&#123;</div><div class="line">  arr[i] = i;</div><div class="line">&#125;</div><div class="line">console.log(arr);</div><div class="line"></div><div class="line">// 方法2</div><div class="line">var arr = [];</div><div class="line">for(var i = 0; i &lt; 10; i++)&#123;</div><div class="line"> arr.push(i);</div><div class="line">&#125;</div><div class="line">console.log(i);</div></pre></td></tr></table></figure></p>
 <h2 id="第一种不使用循环生成数组的方式"><a href="#第一种不使用循环生成数组的方式" class="headerlink" title="第一种不使用循环生成数组的方式"></a>第一种不使用循环生成数组的方式</h2><blockquote>
 <p>使用 <code>Array.apply(null,{length:10})</code>生成10位的数组，每个值为undefined<br>然后再使用<code>Object.keys()</code>方法获取数组中每个数据的key值，<strong>注意这里的值都是字符串，需要处理为number格式</strong></p>
 </blockquote>
