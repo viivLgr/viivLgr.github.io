@@ -158,6 +158,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-格式化时间插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/格式化时间插件/">格式化时间插件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/11/格式化时间插件/" class="archive-article-date">
+  	<time datetime="2017-05-11T07:28:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">//三种获得当前时间戳的方式</div><div class="line">var timestamp1 = (new Date()).valueOf();</div><div class="line">var timestamp2 = new Date().getTime();</div><div class="line">var timestamp3 = Date.parse(new Date());</div><div class="line">console.log(timestamp1,timestamp2,timestamp3);</div><div class="line">// 1494487912124 1494487912124 1494487912000</div><div class="line"></div><div class="line">var now = new Date();</div><div class="line">console.log(now)   // Thu May 11 2017 15:31:07 GMT+0800 (CST)</div><div class="line"></div><div class="line"></div><div class="line">console.log(formatDate(now,&apos;yyyy-MM-dd hh:mm&apos;));</div><div class="line"></div><div class="line">//格式化时间方法</div><div class="line">function formatDate(date,fmt)&#123;</div><div class="line">	if(/(y+)/.test(fmt))&#123;</div><div class="line">		fmt = fmt.replace(RegExp.$1,(date.getFullYear()+&apos;&apos;).substr(4 - RegExp.$1.length));</div><div class="line">                console.log(fmt);  //&quot;2017-MM-dd hh:mm&quot;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	var o = &#123;</div><div class="line">		&apos;M+&apos;: date.getMonth() + 1,</div><div class="line">		&apos;d+&apos;: date.getDate(),</div><div class="line">		&apos;h+&apos;: date.getHours(),</div><div class="line">		&apos;m+&apos;: date.getMinutes(),</div><div class="line">		&apos;s+&apos;: date.getSeconds()</div><div class="line">	&#125;</div><div class="line">	for(let k in o)&#123;</div><div class="line">		if(new RegExp(`($&#123;k&#125;)`).test(fmt))&#123;</div><div class="line">			let str = o[k] + &apos;&apos;;</div><div class="line">			fmt = fmt.replace(RegExp.$1,(RegExp.$1.length === 1) ? str : padLeftZero(str));</div><div class="line">                        console.log(fmt);  // 2017-05-dd hh:mm    依次替换 并且不足两位补0</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return fmt;</div><div class="line">&#125;</div><div class="line">// 不足两位补0</div><div class="line">function padLeftZero(str)&#123;</div><div class="line">	return (&apos;00&apos;+str).substr(str.length);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>欢迎访问我的<a href="http://www.jianshu.com/p/72a298e4488d" target="_blank" rel="external">简书</a>，同步发布<br>感谢阅读，如有错误欢迎指正。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小插件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaScript/" class="article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/11/格式化时间插件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-css每日一练之模拟单选按钮" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -836,84 +910,6 @@
 
 
   
-    <article id="post-jsonp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/jsonp/">jsonp</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/04/jsonp/" class="archive-article-date">
-  	<time datetime="2017-05-04T09:06:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考：<a href="http://blog.csdn.net/u014607184/article/details/52027879">轻松搞定JSONP跨域请求</a><br>参考：<a href="https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&amp;mid=2651552007&amp;idx=1&amp;sn=82381dc98233587426018afd72768d09&amp;chksm=8025aec6b75227d063ee26e27c7bb6e5ea4e3700cb5d6e9634dbd7cee049a40ecc3c1ae0698c&amp;mpshare=1&amp;scene=1&amp;srcid=0503FDsvNa0CJhllNt0V2RTX&amp;key=b7bf05e2e7c728ec6b86b14f8a3269f5b8558a66fd770a963d64940b4ca1e8aa4f9ada0b0d0cb87968a22d0b99aa3be3444508a4193fda9d98e7e4fe9d28acf05a288e9d315b6d2a70d54f72eb408580&amp;ascene=0&amp;uin=NDI3NjE3NDE1&amp;devicetype=iMac+MacBookPro13%2C2+OSX+OSX+10.12.4+build(16E195">JavaScript 跨域总结与解决办法</a>&amp;version=12020510&amp;nettype=WIFI&amp;fontScale=100&amp;pass_ticket=RBWQ%2BryWlU3B%2FMZnILchEGXaFr0LZOqQqXF1pghzJA2zCFx6uqWXuR1ObQWRc5R2)<br>要理解跨域，先要了解一下“同源策略”。</p>
-<blockquote>
-<p>所谓同源是指，<strong>域名</strong>，<strong>协议</strong>，<strong>端口</strong>相同。<br>简单的说就是基于安全考虑，当前域不能访问其他域的东西。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/05/04/jsonp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jsonp/" class="article-tag-list-link color1">jsonp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/04/jsonp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1011,7 +1007,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一练</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1019,11 +1015,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布文章</a>
+                <a href="javascript:void(0)" class="js-tag color3">安装</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">发布文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1035,15 +1039,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+                <a href="javascript:void(0)" class="js-tag color4">小插件</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一练</a>
               </li>
             
             <div class="clearfix"></div>
